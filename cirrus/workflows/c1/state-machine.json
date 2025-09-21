@@ -1,0 +1,34 @@
+{
+  "Comment": "Lambda Test Workflow",
+  "StartAt": "c1-lambda",
+  "States": {
+    "c1-lambda": {
+      "Type": "Task",
+      "Resource": "${tasks.c1.lambda.function_arn}",
+      "Retry": [
+        {
+          "ErrorEquals": [
+            "Lambda.TooManyRequestsException",
+            "Lambda.Unknown"
+          ],
+          "IntervalSeconds": 10,
+          "MaxDelaySeconds": 86400,
+          "BackoffRate": 2.0,
+          "MaxAttempts": 3,
+          "JitterStrategy": "FULL"
+        }
+      ],
+      "Catch": [
+        {
+          "ErrorEquals": ["States.ALL"],
+          "ResultPath": "$.error",
+          "Next": "failure"
+        }
+      ],
+      "End": true
+    },
+    "failure": {
+      "Type": "Fail"
+    }
+  }
+}

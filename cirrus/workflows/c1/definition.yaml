@@ -1,0 +1,3 @@
+name: c1-workflow
+state_machine_filepath: cirrus/workflows/c1/state-machine.json
+role_statements: []

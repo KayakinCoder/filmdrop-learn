@@ -1,0 +1,18 @@
+name: c1
+common_role_statements:
+  - sid: ReadWriteCirrusDataBucket
+    effect: Allow
+    actions:
+      - s3:ListBucket
+      - s3:GetObject
+      - s3:GetBucketLocation
+      - s3:PutObject
+    resources:
+      - arn:aws:s3:::${CIRRUS_DATA_BUCKET}
+      - arn:aws:s3:::${CIRRUS_DATA_BUCKET}/*
+lambda:
+  description: Cirrus task that just sleeps
+  filename: c1-task.zip
+  timeout_seconds: 600
+  memory_mb: 128
+  vpc_enabled: true
