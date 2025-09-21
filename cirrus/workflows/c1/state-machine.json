@@ -4,7 +4,7 @@
   "States": {
     "c1-lambda": {
       "Type": "Task",
-      "Resource": "${tasks.c1.lambda.function_arn}",
+      "Resource": "${tasks.c1-task.lambda.function_arn}",
       "Retry": [
         {
           "ErrorEquals": [
@@ -12,9 +12,9 @@
             "Lambda.Unknown"
           ],
           "IntervalSeconds": 10,
-          "MaxDelaySeconds": 86400,
+          "MaxDelaySeconds": 20,
           "BackoffRate": 2.0,
-          "MaxAttempts": 3,
+          "MaxAttempts": 1,
           "JitterStrategy": "FULL"
         }
       ],

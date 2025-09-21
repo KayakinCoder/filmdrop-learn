@@ -1,4 +1,4 @@
-name: c1
+name: c1-task
 common_role_statements:
   - sid: ReadWriteCirrusDataBucket
     effect: Allow
@@ -15,6 +15,6 @@ lambda:
   filename: cirrus/tasks/c1/c1-task.zip
   runtime: "nodejs22.x"
   handler: "index.handler"
-  timeout_seconds: 600
+  timeout_seconds: 10
   memory_mb: 128
   vpc_enabled: true
