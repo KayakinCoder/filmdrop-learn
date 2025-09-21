@@ -12,7 +12,9 @@ common_role_statements:
       - arn:aws:s3:::${CIRRUS_DATA_BUCKET}/*
 lambda:
   description: Cirrus task that just sleeps
-  filename: c1-task.zip
+  filename: cirrus/tasks/c1/c1-task.zip
+  runtime: "nodejs22.x"
+  handler: "index.handler"
   timeout_seconds: 600
   memory_mb: 128
   vpc_enabled: true
