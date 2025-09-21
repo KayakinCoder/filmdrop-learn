@@ -1,10 +1,10 @@
 ##### PROJECT VARIABLES ####
 # The following variables are global to the FilmDrop infrastructure stack
 environment            = "test"
-project_name           = "TestProj"
+project_name           = "jai"
 domain_zone            = ""
-s3_access_log_bucket   = ""
-s3_logs_archive_bucket = ""
+s3_access_log_bucket   = "jai_fd_accesslog_56135451354"
+s3_logs_archive_bucket = "jai_fd_archivelog_56135451354"
 
 ##### NETWORKING VARIABLES ####
 # If left blank, the infrastructure will try to query the values from the control tower vpc
@@ -270,15 +270,15 @@ deploy_vpc                               = false
 deploy_vpc_search                        = true
 deploy_log_archive                       = true
 deploy_stac_server_opensearch_serverless = false
-deploy_stac_server                       = true
+deploy_stac_server                       = false
 deploy_stac_server_outside_vpc           = false
-deploy_analytics                         = true
-deploy_titiler                           = true
-deploy_console_ui                        = true
-deploy_cirrus                            = true
-deploy_cirrus_dashboard                  = true
+deploy_analytics                         = false
+deploy_titiler                           = false
+deploy_console_ui                        = false
+deploy_cirrus                            = false
+deploy_cirrus_dashboard                  = false
 deploy_local_stac_server_artifacts       = false
-deploy_waf_rule                          = true
+deploy_waf_rule                          = false
 
 
 #### WAF Rule Settings
