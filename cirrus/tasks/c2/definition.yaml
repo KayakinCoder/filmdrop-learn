@@ -44,8 +44,8 @@ lambda:
     PLANETARY_COMPUTER_COLLECTION: "sentinel-2-l2a"
     STAC_API_URL: "https://planetarycomputer.microsoft.com/api/stac/v1"
     STAC_SERVER_INGEST_TOPIC_ARN: "arn:aws:sns:${common.aws_region}:${common.aws_account_id}:${common.resource_prefix}-stac-server-ingest"
-    # CIRRUS_DATA_BUCKET: "${CIRRUS_DATA_BUCKET}"
-    # CIRRUS_PAYLOAD_BUCKET: "${CIRRUS_PAYLOAD_BUCKET}"
+    CIRRUS_DATA_BUCKET: "${CIRRUS_DATA_BUCKET}"
+    CIRRUS_PAYLOAD_BUCKET: "${CIRRUS_PAYLOAD_BUCKET}"
 
   role_statements:
     - sid: "AllowSTACServerPublish"

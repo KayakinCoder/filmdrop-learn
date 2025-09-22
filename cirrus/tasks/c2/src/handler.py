@@ -21,8 +21,8 @@ import planetary_computer
 
 
 # Configure logging
-logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
 
 # Constants
 COLLECTION = os.getenv("PLANETARY_COMPUTER_COLLECTION", "sentinel-2-l2a")
@@ -209,6 +209,7 @@ def download_and_update_item(item: Item) -> Item:
                 # Download the asset using the signed URL
                 response = requests.get(asset.href, timeout=300)
                 response.raise_for_status()
+                logger.info(f"Downloaded {asset_key} for {item.id}. Uploading to {CIRRUS_DATA_BUCKET}")
 
                 # Generate S3 key
                 s3_key = f"sentinel-2-l2a/{item.id}/{asset_key}.tif"
@@ -223,13 +224,12 @@ def download_and_update_item(item: Item) -> Item:
 
                 # Update asset href in original item
                 item.assets[asset_key].href = f"s3://{CIRRUS_DATA_BUCKET}/{s3_key}"
-                logger.info(f"Downloaded and updated {asset_key} for {item.id}")
+                logger.info(f"Updated {asset_key} for {item.id}")
 
             except Exception as e:
                 logger.warning(
-                    f"Failed to download asset {asset_key} for {item.id}: {str(e)}"
+                    f"Failed to process asset {asset_key} for {item.id}: {str(e)}. href: {asset.href}"
                 )
-                # Keep original href if download fails
 
     return item
 

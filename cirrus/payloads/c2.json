@@ -4,7 +4,7 @@
           "type": "Feature",
           "stac_version": "1.1.0",
           "stac_extensions": [],
-          "id": "example-item",
+          "id": "example-item8",
           "bbox": [-71.466769, 42.339271, -70.263734, 43.345864],
           "geometry": {
             "type": "Polygon",
@@ -34,10 +34,10 @@
   ],
   "process": [
     {
-      "id": "c2-workflow-payload1",
+      "id": "c2-workflow-payload8",
       "workflow": "c2-workflow",
       "upload_options": {
-        "path_template": "/data/${collection}/${id}/",
+        "path_template": "s3://fd-jai-test-cirrus-data-20250921141845398300000003/data/${collection}/${id}/",
         "collections": {
           "sentinel-s2-l2a-indexed": ".*"
         }
@@ -45,8 +45,8 @@
       "tasks": { 
         "planetary-computer-to-s3": {
           "tile": "33UUP",
-          "date": "2024-01-01",
-          "download_assets": false,
+          "date": "2024-01-05",
+          "download_assets": true,
           "max_items": 10
         }
       }
