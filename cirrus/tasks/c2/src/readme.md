@@ -1,0 +1,1 @@
+To build the .zip for this task, simply run the `./build.sh` script

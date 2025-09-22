@@ -9,7 +9,7 @@ common_role_statements:
       - "s3:PutObject"
       - "s3:DeleteObject"
     resources:
-      - "arn:aws:s3:::${common.CIRRUS_DATA_BUCKET}/*"
+      - "arn:aws:s3:::${CIRRUS_DATA_BUCKET}/*"
   - sid: "AllowCirrusS3PayloadBucketAccess"
     effect: "Allow"
     actions:
@@ -17,7 +17,7 @@ common_role_statements:
       - "s3:PutObject"
       - "s3:DeleteObject"
     resources:
-      - "arn:aws:s3:::${common.CIRRUS_PAYLOAD_BUCKET}/*"
+      - "arn:aws:s3:::${CIRRUS_PAYLOAD_BUCKET}/*"
   - sid: "AllowSecretsManagerRead"
     effect: "Allow"
     actions:
@@ -37,16 +37,15 @@ lambda:
   # ecr_image_uri: "662634391897.dkr.ecr.us-west-2.amazonaws.com/planetary-computer-to-s3:latest"
   # filename: null
   # Option 2: ZIP file (current default)
-  ecr_image_uri: null
   filename: "cirrus/tasks/c2/c2-task.zip"
+  vpc_enabled: true
+  publish: true
   env_vars:
     PLANETARY_COMPUTER_COLLECTION: "sentinel-2-l2a"
     STAC_API_URL: "https://planetarycomputer.microsoft.com/api/stac/v1"
     STAC_SERVER_INGEST_TOPIC_ARN: "arn:aws:sns:${common.aws_region}:${common.aws_account_id}:${common.resource_prefix}-stac-server-ingest"
-    CIRRUS_DATA_BUCKET: "${common.CIRRUS_DATA_BUCKET}"
-    CIRRUS_PAYLOAD_BUCKET: "${common.CIRRUS_PAYLOAD_BUCKET}"
-  vpc_enabled: true
-  publish: true
+    # CIRRUS_DATA_BUCKET: "${CIRRUS_DATA_BUCKET}"
+    # CIRRUS_PAYLOAD_BUCKET: "${CIRRUS_PAYLOAD_BUCKET}"
 
   role_statements:
     - sid: "AllowSTACServerPublish"

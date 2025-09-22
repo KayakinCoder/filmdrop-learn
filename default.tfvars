@@ -223,11 +223,23 @@ cirrus_inputs = {
   task_batch_compute_definitions_variables     = null
   task_batch_compute_definitions_variables_ssm = null
   task_definitions_dir                         = "cirrus/tasks"
-  task_definitions_variables                   = null
-  task_definitions_variables_ssm               = null
-  workflow_definitions_dir                     = "cirrus/workflows"
-  workflow_definitions_variables               = null
-  workflow_definitions_variables_ssm           = null
+  task_definitions_variables = {
+    common = {
+      aws_region      = "us-west-2"
+      aws_account_id  = "662634391897"
+      resource_prefix = "fd-jai-test"
+    }
+  }
+  task_definitions_variables_ssm = null
+  workflow_definitions_dir       = "cirrus/workflows"
+  workflow_definitions_variables = {
+    common = {
+      aws_region      = "us-west-2"
+      aws_account_id  = "662634391897"
+      resource_prefix = "fd-jai-test"
+    }
+  }
+  workflow_definitions_variables_ssm = null
 }
 
 cirrus_dashboard_inputs = {

@@ -6,7 +6,7 @@ set -e
 
 TASK_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 BUILD_DIR="${TASK_DIR}/build"
-DEPLOYMENT_ZIP="${TASK_DIR}/deployment.zip"
+DEPLOYMENT_ZIP="${TASK_DIR}/c2-task.zip"
 
 echo "📦 Building Planetary Computer to S3 task..."
 
@@ -79,3 +79,6 @@ if [ "$PACKAGE_SIZE_BYTES" -gt 52428800 ]; then  # 50MB limit
     echo "⚠️  Warning: Package size (${PACKAGE_SIZE}) exceeds 50MB Lambda limit."
     echo "   Consider using container deployment instead."
 fi
+
+# move the zip out of src
+mv c2-task.zip ../c2-task.zip
