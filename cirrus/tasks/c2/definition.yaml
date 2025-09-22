@@ -1,0 +1,57 @@
+name: c2-task
+description: Download and index Sentinel-2 L2A data from Microsoft Planetary Computer
+
+common_role_statements:
+  - sid: "AllowCirrusS3DataBucketAccess"
+    effect: "Allow"
+    actions:
+      - "s3:GetObject"
+      - "s3:PutObject"
+      - "s3:DeleteObject"
+    resources:
+      - "arn:aws:s3:::${common.CIRRUS_DATA_BUCKET}/*"
+  - sid: "AllowCirrusS3PayloadBucketAccess"
+    effect: "Allow"
+    actions:
+      - "s3:GetObject"
+      - "s3:PutObject"
+      - "s3:DeleteObject"
+    resources:
+      - "arn:aws:s3:::${common.CIRRUS_PAYLOAD_BUCKET}/*"
+  - sid: "AllowSecretsManagerRead"
+    effect: "Allow"
+    actions:
+      - "secretsmanager:GetSecretValue"
+    resources:
+      - "arn:aws:secretsmanager:${common.aws_region}:${common.aws_account_id}:secret:${common.resource_prefix}-*"
+
+lambda:
+  description: "Downloads Sentinel-2 L2A data from Microsoft Planetary Computer and prepares for STAC indexing"
+  handler: "handler.lambda_handler"
+  runtime: "python3.12"
+  timeout_seconds: 900
+  memory_mb: 1024
+  architectures: ["x86_64"]
+  # Choose deployment method:
+  # Option 1: Container (recommended for large dependencies)
+  # ecr_image_uri: "662634391897.dkr.ecr.us-west-2.amazonaws.com/planetary-computer-to-s3:latest"
+  # filename: null
+  # Option 2: ZIP file (current default)
+  ecr_image_uri: null
+  filename: "cirrus/tasks/c2/c2-task.zip"
+  env_vars:
+    PLANETARY_COMPUTER_COLLECTION: "sentinel-2-l2a"
+    STAC_API_URL: "https://planetarycomputer.microsoft.com/api/stac/v1"
+    STAC_SERVER_INGEST_TOPIC_ARN: "arn:aws:sns:${common.aws_region}:${common.aws_account_id}:${common.resource_prefix}-stac-server-ingest"
+    CIRRUS_DATA_BUCKET: "${common.CIRRUS_DATA_BUCKET}"
+    CIRRUS_PAYLOAD_BUCKET: "${common.CIRRUS_PAYLOAD_BUCKET}"
+  vpc_enabled: true
+  publish: true
+
+  role_statements:
+    - sid: "AllowSTACServerPublish"
+      effect: "Allow"
+      actions:
+        - "sns:Publish"
+      resources:
+        - "arn:aws:sns:${common.aws_region}:${common.aws_account_id}:${common.resource_prefix}-stac-server-ingest"

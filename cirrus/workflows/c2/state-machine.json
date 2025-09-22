@@ -1,0 +1,48 @@
+{
+  "Comment": "Download and index Sentinel-2 L2A data from Microsoft Planetary Computer",
+  "StartAt": "PlanetaryComputerToS3",
+  "States": {
+    "PlanetaryComputerToS3": {
+      "Type": "Task",
+      "Resource": "${tasks.c2-task.lambda.function_arn}",
+      "TimeoutSeconds": 900,
+      "HeartbeatSeconds": 60,
+      "Retry": [
+        {
+          "ErrorEquals": [
+            "States.TaskFailed",
+            "States.ExecutionLimitExceeded",
+            "Lambda.ServiceException",
+            "Lambda.AWSLambdaException",
+            "Lambda.SdkClientException"
+          ],
+          "IntervalSeconds": 5,
+          "MaxAttempts": 3,
+          "BackoffRate": 2.0
+        },
+        {
+          "ErrorEquals": [
+            "Lambda.TooManyRequestsException"
+          ],
+          "IntervalSeconds": 10,
+          "MaxAttempts": 5,
+          "BackoffRate": 2.0
+        }
+      ],
+      "Catch": [
+        {
+          "ErrorEquals": [
+            "States.ALL"
+          ],
+          "Next": "failure",
+          "ResultPath": "$.error"
+        }
+      ],
+      "End": true
+    },
+    "failure": {
+      "Type": "Fail"
+    }
+  }
+}
+

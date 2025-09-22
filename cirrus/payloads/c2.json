@@ -34,12 +34,22 @@
   ],
   "process": [
     {
-      "id": "c1-workflow-payload1",
-      "workflow": "c1-workflow",
+      "id": "c2-workflow-payload1",
+      "workflow": "c2-workflow",
       "upload_options": {
-        "path_template": "this-should-be-a-data-bucket-eventually-but-it-doesnt-matter-for-the-wait-task/data/${collection}/${id}/"
+        "path_template": "/data/${collection}/${id}/",
+        "collections": {
+          "sentinel-s2-l2a-indexed": ".*"
+        }
       },
-      "tasks": { }
+      "tasks": { 
+        "planetary-computer-to-s3": {
+          "tile": "33UUP",
+          "date": "2024-01-01/2024-01-03",
+          "download_assets": false,
+          "max_items": 10
+        }
+      }
     }
   ]
 }

@@ -1,0 +1,4 @@
+planetary-computer
+pystac-client
+requests
+boto3

@@ -1,0 +1,12 @@
+name: c2-workflow
+description: Download and index Sentinel-2 L2A data from Microsoft Planetary Computer into STAC server
+
+state_machine_filepath: "cirrus/workflows/c2/state-machine.json"
+
+role_statements:
+  - sid: "AllowSTACServerPublish"
+    effect: "Allow"
+    actions:
+      - "sns:Publish"
+    resources:
+      - "arn:aws:sns:${common.aws_region}:${common.aws_account_id}:${common.resource_prefix}-stac-server-ingest"
