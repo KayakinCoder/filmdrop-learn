@@ -4,7 +4,7 @@
           "type": "Feature",
           "stac_version": "1.1.0",
           "stac_extensions": [],
-          "id": "example-item8",
+          "id": "example-item10",
           "bbox": [-71.466769, 42.339271, -70.263734, 43.345864],
           "geometry": {
             "type": "Polygon",
@@ -34,7 +34,7 @@
   ],
   "process": [
     {
-      "id": "c2-workflow-payload8",
+      "id": "c2-workflow-payload10",
       "workflow": "c2-workflow",
       "upload_options": {
         "path_template": "s3://fd-jai-test-cirrus-data-20250921141845398300000003/data/${collection}/${id}/",
