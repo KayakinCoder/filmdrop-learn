@@ -275,8 +275,6 @@ resource "aws_api_gateway_deployment" "stac_server_api_gateway" {
   ]
 
   rest_api_id = aws_api_gateway_rest_api.stac_server_api_gateway.id
-  # stage_name        = var.stac_api_stage
-  # stage_description = var.stac_api_stage_description
 
   lifecycle {
     create_before_destroy = true
