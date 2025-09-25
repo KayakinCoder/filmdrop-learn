@@ -11,7 +11,7 @@ common_role_statements:
       - arn:aws:s3:::${CIRRUS_DATA_BUCKET}
       - arn:aws:s3:::${CIRRUS_DATA_BUCKET}/*
 lambda:
-  description: Cirrus task that just sleeps
+  description: Cirrus task that just sleeps.
   filename: cirrus/tasks/c1/c1-task.zip
   runtime: "nodejs22.x"
   handler: "index.handler"
