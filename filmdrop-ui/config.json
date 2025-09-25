@@ -1,0 +1,255 @@
+{
+    "APP_NAME": "Puffin Console",
+    "PUBLIC_URL": "https://console.puffin.element84.com",
+    "LOGO_URL": "./logo.png",
+    "LOGO_ALT": "FilmDrop Logo",
+    "SEARCH_BY_GEOM_ENABLED": true,
+    "BRAND_LOGO": {
+        "url": "https://element84.com/filmdrop",
+        "title": "Learn more about FilmDrop",
+        "alt": "Element 84 FilmDrop Logo",
+        "image": null,
+        "image_light": "./brand-logo-element84-light-mode.svg",
+        "image_dark": "./brand-logo-element84-dark-mode.svg"
+    },
+    "BASEMAP": {
+        "url": "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+        "attribution": "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a>"
+    },
+    "DEFAULT_COLLECTION": "sentinel-2-c1-l2a",
+    "STAC_API_URL": "https://earth-search.aws.element84.com/v1",
+    "API_MAX_ITEMS": 200,
+    "SCENE_TILER_URL": "https://tiler.earth-search.aws.element84.com",
+    "MOSAIC_TILER_URL": "https://tiler.earth-search.aws.element84.com",
+    "DASHBOARD_BTN_URL": "https://dashboard.earth-search.aws.element84.com",
+    "ANALYZE_BTN_URL": "https://analytics.demo.filmdrop.element84.com/",
+    "ACTION_BUTTON": {
+        "text": "Action Text Here",
+        "url": "https://xkcd.com/"
+    },
+    "STAC_LINK_ENABLED": true,
+    "SHOW_ITEM_AUTO_ZOOM": true,
+    "SCENE_TILER_PARAMS": {
+        "sentinel-2-c1-l2a": {
+            "assets": [
+                "visual"
+            ],
+            "nodata": 0
+        },
+        "sentinel-2-pre-c1-l2a": {
+            "assets": [
+                "visual"
+            ]
+        },
+        "sentinel-2-l2a": {
+            "assets": [
+                "visual"
+            ]
+        },
+        "landsat-c2-l2": {
+            "assets": [
+                "red",
+                "green",
+                "blue"
+            ],
+            "color_formula": "Gamma+RGB+1.7+Saturation+1.7+Sigmoidal+RGB+15+0.35"
+        },
+        "naip": {
+            "assets": [
+                "image"
+            ],
+            "bidx": "1,2,3"
+        },
+        "cop-dem-glo-30": {
+            "assets": [
+                "data"
+            ],
+            "colormap_name": "terrain",
+            "rescale": [
+                "-1000,4000"
+            ]
+        },
+        "cop-dem-glo-90": {
+            "assets": [
+                "data"
+            ],
+            "colormap_name": "terrain",
+            "rescale": [
+                "-1000,4000"
+            ]
+        },
+        "sentinel-1-grd": {
+            "assets": [
+                "vv"
+            ],
+            "rescale": [
+                "0,250"
+            ],
+            "colormap_name": "plasma"
+        }
+    },
+    "MOSAIC_TILER_PARAMS": {
+        "sentinel-2-c1-l2a": {
+            "assets": [
+                "visual"
+            ],
+            "nodata": 0
+        },
+        "sentinel-2-pre-c1-l2a": {
+            "assets": [
+                "visual"
+            ]
+        },
+        "sentinel-2-l2a": {
+            "assets": [
+                "visual"
+            ]
+        },
+        "landsat-c2-l2": {
+            "assets": [
+                "red"
+            ],
+            "color_formula": "Gamma+R+1.7+Sigmoidal+R+15+0.35"
+        },
+        "naip": {
+            "assets": [
+                "image"
+            ],
+            "bidx": "1,2,3"
+        },
+        "cop-dem-glo-30": {
+            "assets": [
+                "data"
+            ],
+            "colormap_name": "terrain",
+            "rescale": [
+                "-1000,4000"
+            ]
+        },
+        "cop-dem-glo-90": {
+            "assets": [
+                "data"
+            ],
+            "colormap_name": "terrain",
+            "rescale": [
+                "-1000,4000"
+            ]
+        },
+        "sentinel-1-grd": {
+            "assets": [
+                "vv"
+            ],
+            "rescale": [
+                "0,250"
+            ],
+            "colormap_name": "plasma"
+        }
+    },
+    "MOSAIC_MAX_ITEMS": 100,
+    "MOSAIC_MIN_ZOOM_LEVEL": 7,
+    "SEARCH_MIN_ZOOM_LEVELS": {
+        "sentinel-2-c1-l2a": {
+            "medium": 4,
+            "high": 7
+        },
+        "sentinel-2-pre-c1-l2a": {
+            "medium": 4,
+            "high": 7
+        },
+        "sentinel-2-l2a": {
+            "medium": 4,
+            "high": 7
+        },
+        "sentinel-2-l1c": {
+            "medium": 4,
+            "high": 7
+        },
+        "landsat-c2-l2": {
+            "medium": 4,
+            "high": 7
+        },
+        "naip": {
+            "medium": 10,
+            "high": 14
+        },
+        "cop-dem-glo-30": {
+            "medium": 6,
+            "high": 8
+        },
+        "cop-dem-glo-90": {
+            "medium": 6,
+            "high": 8
+        },
+        "sentinel-1-grd": {
+            "medium": 7,
+            "high": 7
+        }
+    },
+    "POPUP_DISPLAY_FIELDS": {
+        "sentinel-2-c1-l2a": [
+            "datetime",
+            "platform",
+            "eo:cloud_cover"
+        ],
+        "sentinel-2-pre-c1-l2a": [
+            "datetime",
+            "platform",
+            "eo:cloud_cover"
+        ],
+        "sentinel-2-l2a": [
+            "datetime",
+            "platform",
+            "eo:cloud_cover"
+        ],
+        "sentinel-2-l1c": [
+            "datetime",
+            "platform",
+            "eo:cloud_cover"
+        ],
+        "landsat-c2-l2": [
+            "datetime",
+            "platform",
+            "instruments",
+            "eo:cloud_cover"
+        ],
+        "naip": [
+            "datetime",
+            "naip:state",
+            "naip:year",
+            "gsd"
+        ],
+        "cop-dem-glo-30": [
+            "datetime"
+        ],
+        "cop-dem-glo-90": [
+            "datetime"
+        ],
+        "sentinel-1-grd": [
+            "datetime",
+            "platform",
+            "sar:instrument_mode",
+            "sar:polarizations"
+        ]
+    },
+    "LAYER_LIST_ENABLED": true,
+    "LAYER_LIST_SERVICES": [
+        {
+            "name": "Service 1",
+            "type": "wms",
+            "url": "https://ows.terrestris.de/osm-gray/service",
+            "layers": [
+                {
+                    "name": "TOPO-WMS",
+                    "alias": "Topography",
+                    "default_visibility": false,
+                    "crs": "EPSG:4326"
+                }
+            ]
+        }
+    ],
+    "EXPORT_ENABLED": true,
+    "SUPPORTS_AGGREGATIONS": true,
+    "THEME_SWITCHING_ENABLED": true,
+    "THEME_DEFAULT": "light",
+    "CART_ENABLED": true
+}
